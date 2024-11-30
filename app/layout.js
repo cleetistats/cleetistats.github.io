@@ -2,7 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 const rockwell = localFont({
-  src: "./fonts/RockwellNova-bold.ttf",
+  src: "./fonts/RockwellNova-Bold.ttf",
   variable: "--rockwell-bold",
   weight: "100 900",
 });
