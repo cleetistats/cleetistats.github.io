@@ -109,6 +109,7 @@ a.secondary {
   color: white;
   font-size: 1rem;
   width: 100%; 
+  font-family: var(--rockwell-bold);
 }
 
 .loginButton:hover {
