@@ -49,6 +49,11 @@ a.secondary {
   gap: 8px;
 }
 
+.desc {
+  margin-bottom: 1rem;
+  color: white;
+}
+
 .loginBox {
   background: #311c4c;
   padding: 2rem;
@@ -57,6 +62,7 @@ a.secondary {
   width: 40vw;
   max-width: 800px; 
   text-align: left;
+  position: relative;
 }
 
 .loginBox h2 {
@@ -119,6 +125,22 @@ a.secondary {
 .errorMessage {
   color: red;
   margin-top: 10px;
+}
+
+.imageWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center; /* Center the image horizontally */
+  margin-bottom: -2rem; /* Pull the image down */
+}
+
+.image {
+  width: 250px; /* Adjust size as needed */
+  height: auto;
+  object-fit: contain;
+  position: relative;
+  top: -20px; /* Shift the image up */
+  z-index: 1; /* Ensure it stays above other elements */
 }
 
 /* Enable hover only on non-touch devices */
