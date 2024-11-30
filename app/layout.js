@@ -9,7 +9,7 @@ const rockwell = localFont({
 
 export const metadata = {
   title: "CleetiStats",
-  description: "View player stats!",
+  description: "Your go-to place for viewing, updating, and maintaining player stats for CSRL.",
 };
 
 export default function RootLayout({ children }) {
