@@ -1,8 +1,9 @@
 "use client";
 
+import Head from "next/head";
 import Image from "next/image";
 import styles from "./page.module.css";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, getAdditionalUserInfo } from "firebase/auth";
 import { FIREBASE_AUTH } from "../firebaseConfig";
 import { useState } from "react";
 
@@ -18,7 +19,17 @@ export default function Home() {
     try {
       const auth = await signInWithEmailAndPassword(FIREBASE_AUTH, email, password);
       const user = auth.user;
-      console.log("User logged in: ", user);
+      const addlInfo = getAdditionalUserInfo(auth);
+
+      if (addlInfo.isNewUser) {
+        console.log("New user signed in: ", user);
+
+      }
+      else
+      {
+        console.log("Existing user signed in: ", user);
+
+      }
     } catch (error) {
       console.error("Error signing you in: ", error);
       setError("Failed to log in. Are you sure you're using the correct credentials?");
@@ -27,6 +38,9 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <main className={styles.main}>
       <div className={styles.loginBox}>
           <h2>login</h2>
