@@ -1,7 +1,6 @@
 "use client";
 
 import Head from "next/head";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import { signInWithEmailAndPassword, getAdditionalUserInfo } from "firebase/auth";
@@ -30,7 +29,6 @@ export default function Home() {
         const userData = docSnapshot.data();
         if (userData.firstLogin) {
           console.log("New user signed in: ", user);
-          await updateDoc(docReference, { firstLogin: false });
           router.push("/welcome");
         } else {
           console.log("Existing user signed in: ", user);
