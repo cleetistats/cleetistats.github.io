@@ -53,6 +53,9 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
       <div className={styles.loginBox}>
+          <div className={styles.imageWrapper}>
+            <img src="/PFP.png" alt="Welcome graphic" className={styles.image} />
+          </div>
           <h2>login</h2>
           <form onSubmit={handleSignIn}>
             <div className={styles.inputGroup}>
