@@ -2,15 +2,18 @@
 
 import Head from "next/head";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import { signInWithEmailAndPassword, getAdditionalUserInfo } from "firebase/auth";
-import { FIREBASE_AUTH } from "../firebaseConfig";
+import { getDoc, doc, updateDoc } from "firebase/firestore";
+import { FIREBASE_AUTH, FIREBASE_DB } from "../firebaseConfig";
 import { useState } from "react";
 
 export default function Home() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const router = useRouter();
 
   const handleSignIn = async (param) => {
     param.preventDefault();
@@ -19,16 +22,23 @@ export default function Home() {
     try {
       const auth = await signInWithEmailAndPassword(FIREBASE_AUTH, email, password);
       const user = auth.user;
-      const addlInfo = getAdditionalUserInfo(auth);
+      
+      const docReference = doc(FIREBASE_DB, "admin", user.uid);
+      const docSnapshot = await getDoc(docReference);
 
-      if (addlInfo.isNewUser) {
-        console.log("New user signed in: ", user);
-
-      }
-      else
-      {
-        console.log("Existing user signed in: ", user);
-
+      if (docSnapshot.exists()) {
+        const userData = docSnapshot.data();
+        if (userData.firstLogin) {
+          console.log("New user signed in: ", user);
+          await updateDoc(docReference, { firstLogin: false });
+          router.push("/welcome");
+        } else {
+          console.log("Existing user signed in: ", user);
+          router.push("/dashboard");
+        }
+      } else {
+        console.error("No Firestore document found for the user.");
+        setError("User profile not found. Please contact league staff on discord.");
       }
     } catch (error) {
       console.error("Error signing you in: ", error);
