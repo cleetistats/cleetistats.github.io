@@ -50,7 +50,7 @@ export default function Welcome() {
         <main className={styles.main}>
           <div className={styles.loginBox}>
             <div className={styles.imageWrapper}>
-              <img src="/PFP.png" alt="Welcome graphic" className={styles.image} />
+              <img src="/pfp.png" alt="Welcome graphic" className={styles.image} />
             </div>
             <h2>welcome in!</h2>
             <p className={styles.desc}>We just gotta do some administrative tasks, then we'll take you to the dashboard.</p>

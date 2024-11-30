@@ -44,7 +44,7 @@ export default function Dashboard() {
         <main className={styles.main}>
           <div className={styles.dashboardBox}>
           <div className={styles.imageWrapper}>
-            <img src="/PFP.png" alt="Welcome graphic" className={styles.image} />
+            <img src="/pfp.png" alt="Welcome graphic" className={styles.image} />
           </div>
             <h2>dashboard</h2>
             <div className={styles.columns}>
