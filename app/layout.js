@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import TransitionProvider from "./TransitionProvider";
 
 const rockwell = localFont({
   src: "./fonts/RockwellNova-bold.ttf",
@@ -13,12 +14,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  return (
+ return (
     <html lang="en">
       <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       <body className={`${rockwell.variable}`}>
-        {children}
+        <TransitionProvider>{children}</TransitionProvider>
       </body>
     </html>
   );
 }
+
+
