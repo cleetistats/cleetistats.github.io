@@ -4,20 +4,22 @@ import ProtectedRoute from "../ProtectedRoute";
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import { getDoc, doc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { FIREBASE_DB } from "../../firebaseConfig";
+import { useRouter } from "next/navigation";
 
 export default function Dashboard() {
 
   const [username, setUsername] = useState("");
+  const [loading, setLoading] = useState(true); // To show loading state
+  const router = useRouter();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const auth = getAuth();
-        const user = auth.currentUser;
+    const auth = getAuth();
 
-        if (user) {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        try {
           const docReference = doc(FIREBASE_DB, "admin", user.uid);
           const docSnapshot = await getDoc(docReference);
 
@@ -27,16 +29,33 @@ export default function Dashboard() {
           } else {
             console.error("No such document!");
           }
-        } else {
-          console.error("No user is signed in.");
+        } catch (error) {
+          console.error("Error fetching document:", error);
         }
-      } catch (error) {
-        console.error("Error fetching document:", error);
+      } else {
+        console.error("No user is signed in.");
+        router.push("/login"); // Redirect to login if no user
       }
-    };
+      setLoading(false); // Stop loading once done
+    });
 
-    fetchData();
-  }, []); // Empty dependency array to run only once on mount
+    return () => unsubscribe(); // Cleanup the listener
+  }, [router]);
+
+  if (loading) {
+    return (
+      <div className={styles.page}>
+      <main className={styles.main}>
+        <div className={styles.dashboardBox}>
+        <div className={styles.imageWrapper}>
+          <img src="/pfp.png" alt="Welcome graphic" className={styles.image} />
+        </div>
+          <h2>loading...</h2>
+        </div>
+      </main>
+    </div>
+  ); // Optional loading spinner or UI
+  }
 
   return (
     <ProtectedRoute>
@@ -78,19 +97,19 @@ export default function Dashboard() {
                 <div className={styles.buttonRow}>
                   <button className={styles.iconButton}>
                     <img src="/bar-chart.png" className={styles.icon}/>
-                    <div>update player stats</div>
+                    <div>manage player stats</div>
                   </button>
                   <button className={styles.iconButton}>
                     <img src="/group.png" className={styles.icon}/>
-                    <div>update teams</div>
+                    <div>manage teams</div>
                   </button>
                   <button className={styles.iconButton}>
                     <img src="/user.png" className={styles.icon}/>
-                    <div>update players</div>
+                    <div>manage players</div>
                   </button>
                   <button className={styles.iconButton}>
                     <img src="/calendar.png" className={styles.icon}/>
-                    <div>update schedule</div>
+                    <div>manage schedule</div>
                   </button>
                 </div>
               </div>
