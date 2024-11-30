@@ -64,6 +64,10 @@ export default function Dashboard() {
                     <div>view teams</div>
                   </button>
                   <button className={styles.iconButton}>
+                    <img src="/user.png" className={styles.icon}/>
+                    <div>view players</div>
+                  </button>
+                  <button className={styles.iconButton}>
                     <img src="/calendar.png" className={styles.icon}/>
                     <div>view schedule</div>
                   </button>
@@ -79,6 +83,10 @@ export default function Dashboard() {
                   <button className={styles.iconButton}>
                     <img src="/group.png" className={styles.icon}/>
                     <div>update teams</div>
+                  </button>
+                  <button className={styles.iconButton}>
+                    <img src="/user.png" className={styles.icon}/>
+                    <div>update players</div>
                   </button>
                   <button className={styles.iconButton}>
                     <img src="/calendar.png" className={styles.icon}/>
