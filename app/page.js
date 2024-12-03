@@ -54,7 +54,7 @@ export default function Home() {
           <div className={styles.imageWrapper}>
             <img src="/pfp.png" alt="Welcome graphic" className={styles.image} />
           </div>
-          <h2>Login</h2>
+          <h2>Staff Login</h2>
           <form onSubmit={handleSignIn}>
             <div className={styles.inputGroup}>
               <label htmlFor="email">Email</label>
