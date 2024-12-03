@@ -54,20 +54,20 @@ export default function Home() {
           <div className={styles.imageWrapper}>
             <img src="/pfp.png" alt="Welcome graphic" className={styles.image} />
           </div>
-          <h2>login</h2>
+          <h2>Login</h2>
           <form onSubmit={handleSignIn}>
             <div className={styles.inputGroup}>
-              <label htmlFor="email">email</label>
+              <label htmlFor="email">Email</label>
               <input type="text" id="email" placeholder="Email" value={email} onChange={(email) => setEmail(email.target.value)} />
             </div>
             <div className={styles.inputGroup}>
-              <label htmlFor="password">password</label>
+              <label htmlFor="password">Password</label>
               <input type="password" id="password" placeholder="Password" value={password} onChange={(pswd) => setPassword(pswd.target.value)}/>
             </div>
             <button type="submit" className={styles.loginButton}>Login</button>
           </form>
           {error && <p className={styles.errorMessage}>{error}</p>}
-          <p>don't have a login, but need one? contact league staff on discord!</p>
+          <p>Don't have a login? Contact league staff on discord!</p>
         </div>
 
       </main>
