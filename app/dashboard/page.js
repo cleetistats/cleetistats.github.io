@@ -65,7 +65,7 @@ export default function Dashboard() {
           <div className={styles.imageWrapper}>
             <img src="/pfp.png" alt="Welcome graphic" className={styles.image} />
           </div>
-            <h2>dashboard</h2>
+            <h2>Dashboard</h2>
             <div className={styles.columns}>
               {/* First Column */}
               <div className={styles.columnOne}>
@@ -76,19 +76,19 @@ export default function Dashboard() {
                 <div className={styles.buttonRow}>
                   <button className={styles.iconButton}>
                     <img src="/bar-chart.png" className={styles.icon}/>
-                    <div>view player stats</div>
+                    <div>View Player Stats</div>
                   </button>
                   <button className={styles.iconButton}>
                     <img src="/group.png" className={styles.icon}/>
-                    <div>view teams</div>
+                    <div>View Teams</div>
                   </button>
                   <button className={styles.iconButton}>
                     <img src="/user.png" className={styles.icon}/>
-                    <div>view players</div>
+                    <div>View Players</div>
                   </button>
                   <button className={styles.iconButton}>
                     <img src="/calendar.png" className={styles.icon}/>
-                    <div>view schedule</div>
+                    <div>View Schedule</div>
                   </button>
                 </div>
               </div>
@@ -97,19 +97,19 @@ export default function Dashboard() {
                 <div className={styles.buttonRow}>
                   <button className={styles.iconButton}>
                     <img src="/bar-chart.png" className={styles.icon}/>
-                    <div>manage player stats</div>
+                    <div>Manage Player Stats</div>
                   </button>
                   <button className={styles.iconButton}>
                     <img src="/group.png" className={styles.icon}/>
-                    <div>manage teams</div>
+                    <div>Manage Teams</div>
                   </button>
                   <button className={styles.iconButton}>
                     <img src="/user.png" className={styles.icon}/>
-                    <div>manage players</div>
+                    <div>Manage Players</div>
                   </button>
                   <button className={styles.iconButton}>
                     <img src="/calendar.png" className={styles.icon}/>
-                    <div>manage schedule</div>
+                    <div>Manage Schedule</div>
                   </button>
                 </div>
               </div>

@@ -52,15 +52,15 @@ export default function Welcome() {
             <div className={styles.imageWrapper}>
               <img src="/pfp.png" alt="Welcome graphic" className={styles.image} />
             </div>
-            <h2>welcome in!</h2>
+            <h2>Welcome in!</h2>
             <p className={styles.desc}>We just gotta do some administrative tasks, then we'll take you to the dashboard.</p>
             <form onSubmit={handleSubmit}>
               <div className={styles.inputGroup}>
-                <label htmlFor="username">username</label>
+                <label htmlFor="username">Username</label>
                 <input type="text" id="username" placeholder="Enter discord or epic ID" value={username} onChange={(uname) => setUsername(uname.target.value)} required/>
               </div>
               <div className={styles.inputGroup}>
-                <label htmlFor="password">new password</label>
+                <label htmlFor="password">New password</label>
                 <input type="password" id="password" placeholder="Anything, just not the one we gave you. :D" value={password} onChange={(pswd) => setPassword(pswd.target.value)} required/>
               </div>
               <button type="submit" className={styles.loginButton}>Proceed</button>
