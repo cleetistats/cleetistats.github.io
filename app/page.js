@@ -67,7 +67,7 @@ export default function Home() {
             <button type="submit" className={styles.loginButton}>Login</button>
           </form>
           {error && <p className={styles.errorMessage}>{error}</p>}
-          <p>Don't have a login? Contact league staff on discord!</p>
+          <p className={styles.contactPhrase}>Don't have a login? Contact league staff on discord!</p>
         </div>
 
       </main>
